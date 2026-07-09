@@ -2,3 +2,5 @@
 .omo/
 .omx/
 .qa/
+tmp/
+tools/mutesound-aws-wordpress.config.json

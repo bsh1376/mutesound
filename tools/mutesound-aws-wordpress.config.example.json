@@ -1,0 +1,14 @@
+{
+  "projectName": "mutesound",
+  "domain": "mutesound.co.kr",
+  "wwwDomain": "www.mutesound.co.kr",
+  "region": "ap-northeast-2",
+  "availabilityZone": "ap-northeast-2a",
+  "blueprintId": "wordpress",
+  "bundleId": "nano_3_0",
+  "staticIpName": "mutesound-ip",
+  "sshKeyPath": "",
+  "pluginZipUrl": "https://bsh1376.github.io/mutesound/wordpress/mutesound-landing.zip",
+  "route53HostedZoneId": "",
+  "sslEmail": "you@example.com"
+}

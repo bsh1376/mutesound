@@ -1,8 +1,8 @@
 <?php
 /**
  * Plugin Name: MUTESOUND Landing Page
- * Description: MUTESOUND landing page shortcode for WordPress. Use [mutesound_landing] on a page.
- * Version: 1.0.0
+ * Description: MUTESOUND landing page shortcode and front page renderer for WordPress.
+ * Version: 1.0.1
  * Author: MUTESOUND
  * License: GPL-2.0-or-later
  */
@@ -11,23 +11,33 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-function mutesound_landing_shortcode() {
+const MUTESOUND_LANDING_VERSION = '1.0.1';
+
+function mutesound_landing_template_html() {
     $template_path = plugin_dir_path(__FILE__) . 'templates/landing.html';
     if (!file_exists($template_path)) {
-        return '<p>MUTESOUND landing template is missing.</p>';
+        return '';
     }
 
     $html = file_get_contents($template_path);
     $base_url = esc_url(plugin_dir_url(__FILE__));
 
-    $html = str_replace(
+    return str_replace(
         array('src="assets/', 'src="uploads/', 'href="assets/'),
         array('src="' . $base_url . 'assets/', 'src="' . $base_url . 'uploads/', 'href="' . $base_url . 'assets/'),
         $html
     );
+}
 
-    $css_url = esc_url($base_url . 'assets/mutesound.css?ver=1.0.0');
-    $js_url = esc_url($base_url . 'assets/mutesound.js?ver=1.0.0');
+function mutesound_landing_shortcode() {
+    $html = mutesound_landing_template_html();
+    if ($html === '') {
+        return '<p>MUTESOUND landing template is missing.</p>';
+    }
+
+    $base_url = esc_url(plugin_dir_url(__FILE__));
+    $css_url = esc_url($base_url . 'assets/mutesound.css?ver=' . MUTESOUND_LANDING_VERSION);
+    $js_url = esc_url($base_url . 'assets/mutesound.js?ver=' . MUTESOUND_LANDING_VERSION);
     $asset_base = wp_json_encode($base_url);
 
     return '<link rel="stylesheet" href="' . $css_url . '">' .
@@ -37,3 +47,56 @@ function mutesound_landing_shortcode() {
 }
 
 add_shortcode('mutesound_landing', 'mutesound_landing_shortcode');
+
+function mutesound_landing_is_full_page_request() {
+    if (is_admin() || wp_doing_ajax()) {
+        return false;
+    }
+
+    return is_front_page() || is_page('mutesound-landing');
+}
+
+function mutesound_landing_render_full_page() {
+    if (!mutesound_landing_is_full_page_request()) {
+        return;
+    }
+
+    $html = mutesound_landing_template_html();
+    if ($html === '') {
+        return;
+    }
+
+    $base_url = esc_url(plugin_dir_url(__FILE__));
+    $css_url = esc_url($base_url . 'assets/mutesound.css?ver=' . MUTESOUND_LANDING_VERSION);
+    $js_url = esc_url($base_url . 'assets/mutesound.js?ver=' . MUTESOUND_LANDING_VERSION);
+    $hero_url = esc_url($base_url . 'uploads/KakaoTalk_20260630_155149554.jpg');
+    $og_url = esc_url($base_url . 'assets/og-image.png');
+    $canonical_url = esc_url(home_url('/'));
+    $asset_base = wp_json_encode($base_url);
+    $charset = esc_attr(get_bloginfo('charset'));
+
+    status_header(200);
+    header('Content-Type: text/html; charset=' . $charset);
+
+    echo '<!doctype html><html lang="ko"><head>';
+    echo '<meta charset="' . $charset . '">';
+    echo '<meta name="viewport" content="width=device-width, initial-scale=1">';
+    echo '<title>MUTESOUND | 음악 학원 · 연습실 전문 방음 시공</title>';
+    echo '<meta name="description" content="MUTESOUND는 음악 학원, 연습실, 스튜디오를 위한 현장 실측 기반 방음 시공을 제공합니다.">';
+    echo '<link rel="canonical" href="' . $canonical_url . '">';
+    echo '<meta property="og:type" content="website">';
+    echo '<meta property="og:title" content="MUTESOUND | 음악 학원 · 연습실 전문 방음 시공">';
+    echo '<meta property="og:description" content="드럼 연습실, 합주실, 음악 학원을 위한 전문 방음 시공 상담.">';
+    echo '<meta property="og:image" content="' . $og_url . '">';
+    echo '<link rel="preload" as="image" href="' . $hero_url . '" fetchpriority="high">';
+    echo '<link rel="stylesheet" href="' . $css_url . '">';
+    echo '<style>html,body{margin:0;padding:0;background:#f7f9fb;}body{font-family:Pretendard,system-ui,-apple-system,BlinkMacSystemFont,sans-serif;}</style>';
+    echo '</head><body>';
+    echo $html;
+    echo '<script>window.MUTESOUND_ASSET_BASE = ' . $asset_base . ';</script>';
+    echo '<script src="' . $js_url . '" defer></script>';
+    echo '</body></html>';
+    exit;
+}
+
+add_action('template_redirect', 'mutesound_landing_render_full_page', 0);

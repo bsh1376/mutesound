@@ -26,6 +26,30 @@ python3 -m http.server 4173
 
 자세한 절차는 `wordpress/README.md`에 정리했습니다.
 
+## AWS WordPress 자동화
+
+AWS Lightsail, Static IP, DNS, HTTPS, 워드프레스 플러그인 업로드까지 이어지는 절차는 `docs/aws-wordpress-automation.md`에 정리했습니다.
+
+먼저 아래 명령으로 로컬 준비 상태와 실행 계획을 확인합니다.
+
+```bash
+node tools/aws-wordpress-setup.mjs check
+node tools/aws-wordpress-setup.mjs plan
+node tools/aws-wordpress-setup.mjs wordpress
+```
+
+AWS 인스턴스가 준비된 뒤 워드프레스 적용까지 자동으로 처리하려면:
+
+```bash
+node tools/aws-wordpress-setup.mjs deploy-wordpress --execute
+```
+
+가비아 DNS가 새 Static IP를 바라보게 된 뒤 HTTPS까지 마무리하려면:
+
+```bash
+node tools/aws-wordpress-setup.mjs finish-domain --execute
+```
+
 ## 파일 구조
 
 - `index.html`: GitHub Pages 또는 단독 호스팅용 원본 HTML
@@ -33,6 +57,8 @@ python3 -m http.server 4173
 - `uploads/`: 시공 포트폴리오 사진
 - `DESIGN.md`: 페이지 디자인 시스템
 - `tools/build-wordpress-plugin.mjs`: 워드프레스 플러그인 재생성 스크립트
+- `tools/aws-wordpress-setup.mjs`: AWS Lightsail/WordPress 자동화 보조 스크립트
+- `docs/aws-wordpress-automation.md`: AWS WordPress 자동화 실행 가이드
 - `wordpress/mutesound-landing.zip`: 워드프레스 업로드용 플러그인 압축 파일
 
 ## 수정 후 워드프레스 패키지 다시 만들기
