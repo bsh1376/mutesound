@@ -8,7 +8,7 @@
   "bundleId": "nano_3_0",
   "staticIpName": "mutesound-ip",
   "sshKeyPath": "",
-  "pluginZipUrl": "https://bsh1376.github.io/mutesound/wordpress/mutesound-landing.zip",
+  "pluginZipUrl": "https://raw.githubusercontent.com/bsh1376/mutesound/main/wordpress/mutesound-landing.zip",
   "route53HostedZoneId": "",
   "sslEmail": "you@example.com"
 }
