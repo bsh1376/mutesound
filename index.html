@@ -32,10 +32,18 @@
   html { scroll-behavior: smooth; }
   body { margin: 0; }
   ::selection { background: #191c1e; color: #f7f9fb; }
-  @keyframes msScrollBounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(8px)} }
   .svc-card { transition: all 0.3s cubic-bezier(0.4,0,0.2,1); }
   .svc-card:hover { box-shadow: 0 20px 40px rgba(15,23,42,0.07); transform: translateY(-3px); }
   a { transition: opacity 0.2s; }
+  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+    outline: 2px solid #bec6e0;
+    outline-offset: 3px;
+  }
+  input:focus, select:focus, textarea:focus {
+    border-color: #191c1e !important;
+    box-shadow: 0 0 0 3px rgba(25,28,30,0.12);
+  }
+  button { font-family: inherit; }
   @media (max-width: 900px) {
     [data-r="hwrap"] { padding: 0 20px !important; height: 68px !important; }
     [data-r="navlinks"] { display: none !important; }
@@ -58,6 +66,8 @@
     [data-r="statgrid"],[data-r="stepgrid"],[data-r="casegrid"] { grid-template-columns: 1fr !important; }
     [data-r="h1"] { font-size: 30px !important; }
     [data-r="h2"] { font-size: 22px !important; }
+    [data-r="hero-cta"] { flex-direction: column !important; align-items: stretch !important; width: 100% !important; }
+    [data-r="hero-cta"] a { justify-content: center !important; text-align: center !important; }
   }
 
   /* ---- Mobile UX ---- */
@@ -67,12 +77,11 @@
   .nav-toggle { display: none; }
   .mobile-menu {
     display: none; position: absolute; top: 100%; left: 0; width: 100%;
-    background: rgba(247,249,251,0.98); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    background: #f7f9fb;
     border-bottom: 1px solid #c6c6cd; box-shadow: 0 12px 24px rgba(15,23,42,0.06);
   }
   .mobile-menu a { display: block; padding: 15px 20px; text-decoration: none; color: #191c1e; font-size: 16px; font-weight: 500; border-top: 1px solid #e4e7ea; }
   .mobile-menu a:first-child { border-top: none; }
-  .mobile-menu a.mm-cta { margin: 12px; padding: 15px; text-align: center; background: #191c1e; color: #f7f9fb; font-weight: 600; border: none; border-radius: 2px; }
   @media (max-width: 900px) {
     .nav-toggle {
       display: flex; align-items: center; justify-content: center;
@@ -85,6 +94,10 @@
   @media (hover: none) {
     .svc-card:hover { box-shadow: none; transform: none; }
   }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: 0.001ms !important; }
+  }
 </style>
 </head>
 <body>
@@ -95,7 +108,7 @@
 <nav style="position:fixed; top:0; width:100%; z-index:100; background:rgba(247,249,251,0.85); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border-bottom:1px solid #c6c6cd;">
   <div data-r="hwrap" style="max-width:1280px; margin:0 auto; padding:0 64px; height:80px; display:flex; align-items:center; justify-content:space-between; gap:24px;">
     <a href="#top" style="text-decoration:none;">
-      <img src="assets/logo-full.png" alt="MUTESOUND" style="height:56px; width:auto; object-fit:contain; display:block;">
+      <img src="assets/logo-full.png" alt="MUTESOUND" style="height:64px; width:auto; object-fit:contain; display:block;">
     </a>
     <div data-r="navlinks" style="display:flex; align-items:center; gap:32px;">
       <a href="#top" style="text-decoration:none; color:#191c1e; font-size:16px; font-weight:700; border-bottom:2px solid #191c1e; padding-bottom:2px;">Home</a>
@@ -113,29 +126,26 @@
     <a href="#cases" data-mm>Portfolio</a>
     <a href="#services" data-mm>Services</a>
     <a href="#contact" data-mm>Contact</a>
-    <a href="#contact" class="mm-cta" data-mm>무료 상담 신청</a>
   </div>
 </nav>
 
 <!-- HERO -->
-<section id="top" style="position:relative; height:90vh; min-height:560px; display:flex; align-items:center; justify-content:center; overflow:hidden; padding-top:80px;">
-  <div style="position:absolute; inset:0; z-index:0; background:linear-gradient(160deg,#3a2e24 0%,#2a2520 35%,#1a1a20 70%,#0f1218 100%);"></div>
-  <div style="position:absolute; inset:0; z-index:1; background:rgba(247,249,251,0.4); backdrop-filter:blur(2px); -webkit-backdrop-filter:blur(2px);"></div>
-  <div data-r="hero-inner" style="position:relative; z-index:2; max-width:900px; margin:0 auto; padding:0 64px; text-align:center; display:flex; flex-direction:column; align-items:center;">
-    <p style="font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#191c1e; opacity:0.65; margin:0 0 24px;">The Science of Silence</p>
-    <h1 data-r="h1" style="font-weight:700; font-size:64px; line-height:1.1; letter-spacing:-0.02em; margin:0 0 32px; color:#191c1e; text-wrap:pretty;">지상에서도 편하게<br>드럼연주 하세요.</h1>
-    <p style="font-size:18px; line-height:1.6; color:#45464d; max-width:34em; margin:0 0 40px; background:rgba(247,249,251,0.72); padding:10px 18px; border-radius:2px; display:inline-block;">
-      완벽한 차음 환경을 위한 전문가의 솔루션. 음악 학원부터 개인 스튜디오까지, 소리의 통제를 예술로 승화시킵니다.
+<section id="top" style="position:relative; min-height:100dvh; display:flex; align-items:center; overflow:hidden; padding:104px 0 48px;">
+  <div style="position:absolute; inset:0; z-index:0; background:#0f1218;">
+    <img src="uploads/KakaoTalk_20260630_155149554.jpg" alt="" width="1080" height="720" fetchpriority="high" decoding="async" style="width:100%; height:100%; object-fit:cover; object-position:center; opacity:0.72; display:block;">
+  </div>
+  <div style="position:absolute; inset:0; z-index:1; background:linear-gradient(90deg,rgba(12,16,24,0.94) 0%,rgba(12,16,24,0.76) 44%,rgba(12,16,24,0.24) 100%);"></div>
+  <div data-r="hero-inner" style="position:relative; z-index:2; max-width:1280px; width:100%; margin:0 auto; padding:0 64px; text-align:left; display:flex; flex-direction:column; align-items:flex-start;">
+    <p style="font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#bec6e0; margin:0 0 24px;">The Science of Silence</p>
+    <h1 data-r="h1" style="font-weight:700; font-size:64px; line-height:1.1; letter-spacing:0; margin:0 0 32px; color:#f7f9fb; text-wrap:pretty;">지상에서도 편하게<br>드럼 연주하세요.</h1>
+    <p style="font-size:18px; line-height:1.6; color:#eceef0; max-width:34em; margin:0 0 40px; background:rgba(19,27,46,0.62); border:1px solid rgba(236,238,240,0.16); padding:12px 18px; border-radius:2px; display:inline-block; backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);">
+      음악 학원부터 개인 스튜디오까지, 현장 실측 기반으로 소리가 새는 경로를 먼저 설계합니다.
     </p>
-    <div style="display:flex; gap:16px; flex-wrap:wrap; justify-content:center;">
-      <a href="#contact" style="text-decoration:none; background:#191c1e; color:#f7f9fb; font-size:16px; font-weight:500; padding:16px 32px; border-radius:2px; display:flex; align-items:center; gap:8px;">무료 견적 받기 →</a>
-      <a href="#services" style="text-decoration:none; border:1px solid rgba(25,28,30,0.3); background:rgba(247,249,251,0.82); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); color:#191c1e; font-size:16px; font-weight:500; padding:16px 32px; border-radius:2px;">서비스 알아보기</a>
+    <div data-r="hero-cta" style="display:flex; gap:16px; flex-wrap:wrap; justify-content:flex-start;">
+      <a href="#contact" style="text-decoration:none; background:#f7f9fb; color:#191c1e; font-size:16px; font-weight:700; padding:16px 32px; border-radius:2px; display:flex; align-items:center; gap:8px;">무료 견적 받기 →</a>
+      <a href="#services" style="text-decoration:none; border:1px solid rgba(247,249,251,0.42); background:rgba(19,27,46,0.34); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); color:#f7f9fb; font-size:16px; font-weight:600; padding:16px 32px; border-radius:2px;">서비스 알아보기</a>
     </div>
   </div>
-  <a href="#stats" style="position:absolute; bottom:32px; left:50%; transform:translateX(-50%); z-index:2; display:flex; flex-direction:column; align-items:center; gap:6px; text-decoration:none; color:#191c1e; opacity:0.55; font-size:12px; font-weight:700; letter-spacing:0.1em; animation:msScrollBounce 1.6s ease-in-out infinite;">
-    Scroll
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"></path></svg>
-  </a>
 </section>
 
 <!-- STATS -->
@@ -338,7 +348,7 @@
       <div style="font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#45464d; margin-bottom:20px;">ABOUT · 회사 소개</div>
       <h2 data-r="h2" style="font-size:38px; font-weight:600; letter-spacing:-0.02em; line-height:1.3; margin:0 0 24px; color:#191c1e;">방음만 파고든<br>전문가의 손에 맡기세요</h2>
       <p style="font-size:17px; line-height:1.8; color:#45464d; margin:0;">MUTESOUND는 음악 공간 방음 시공에 집중해 온 전문 업체입니다. 특히 가장 어려운 <strong style="color:#191c1e;">지상층 드럼 방음</strong>이 가능한 국내 소수 업체로, 매년 30건 이상의 현장에서 차음 성능을 검증해 왔습니다.</p>
-      <img src="assets/business-card.jpg" alt="MUTESOUND 명함 · 방성환 대표" loading="lazy" decoding="async" style="display:block; width:100%; aspect-ratio:1200/778; object-fit:cover; margin-top:32px; border-radius:2px; border:1px solid #c6c6cd;">
+      <img src="assets/business-card.jpg" alt="MUTESOUND 명함 · 방성환 대표" loading="eager" decoding="async" style="display:block; width:100%; aspect-ratio:1200/778; object-fit:cover; margin-top:32px; border-radius:2px; border:1px solid #c6c6cd;">
     </div>
     <div style="display:flex; flex-direction:column; gap:14px;">
       <div style="display:flex; gap:14px; align-items:flex-start; background:#f2f4f6; border:1px solid #c6c6cd; border-radius:2px; padding:20px 22px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#191c1e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;"><polyline points="20 6 9 17 4 12"></polyline></svg><span style="font-size:16px; line-height:1.6; color:#191c1e; font-weight:500;">지상층 드럼 방음이 가능한 국내 소수 전문 업체</span></div>
@@ -388,11 +398,11 @@
         <div style="display:flex; flex-direction:column; gap:16px;">
           <label style="display:block;">
             <span style="display:block; font-size:13px; font-weight:600; color:#45464d; margin-bottom:7px;">성함</span>
-            <input name="name" placeholder="홍길동" style="width:100%; padding:12px 14px; border:1px solid #c6c6cd; border-radius:2px; font-size:16px; font-family:inherit; background:#fff; color:#191c1e; outline:none;">
+            <input name="name" autocomplete="name" required placeholder="홍길동" style="width:100%; padding:12px 14px; border:1px solid #c6c6cd; border-radius:2px; font-size:16px; font-family:inherit; background:#fff; color:#191c1e; outline:none;">
           </label>
           <label style="display:block;">
             <span style="display:block; font-size:13px; font-weight:600; color:#45464d; margin-bottom:7px;">연락처</span>
-            <input name="phone" placeholder="010-0000-0000" style="width:100%; padding:12px 14px; border:1px solid #c6c6cd; border-radius:2px; font-size:16px; font-family:inherit; background:#fff; color:#191c1e; outline:none;">
+            <input name="phone" type="tel" autocomplete="tel" required placeholder="010-0000-0000" style="width:100%; padding:12px 14px; border:1px solid #c6c6cd; border-radius:2px; font-size:16px; font-family:inherit; background:#fff; color:#191c1e; outline:none;">
           </label>
           <label style="display:block;">
             <span style="display:block; font-size:13px; font-weight:600; color:#45464d; margin-bottom:7px;">공간 유형</span>
@@ -410,7 +420,7 @@
             <textarea name="msg" placeholder="공간 위치, 면적, 원하시는 일정 등을 적어주세요." rows="3" style="width:100%; padding:12px 14px; border:1px solid #c6c6cd; border-radius:2px; font-size:16px; font-family:inherit; background:#fff; color:#191c1e; outline:none; resize:vertical;"></textarea>
           </label>
           <button id="consultSubmit" type="submit" style="margin-top:4px; width:100%; padding:15px; border:none; border-radius:2px; background:#191c1e; color:#f7f9fb; font-size:16px; font-weight:600; font-family:inherit; cursor:pointer;">무료 상담 신청하기</button>
-          <div id="consultError" style="display:none; font-size:13px; color:#b3261e; text-align:center;">전송에 실패했습니다. 전화(010-5310-1376)로 문의해 주세요.</div>
+          <div id="consultError" role="alert" aria-live="polite" style="display:none; font-size:13px; color:#b3261e; text-align:center;">전송에 실패했습니다. 전화(010-5310-1376)로 문의해 주세요.</div>
           <div style="font-size:12px; color:#76777d; text-align:center;">제출하신 정보는 상담 목적 외에 사용되지 않습니다.</div>
         </div>
       </form>
@@ -461,6 +471,13 @@
   var PLACEHOLDER_SLIDE = 'background-image:repeating-linear-gradient(45deg,#e0e3e5 0 13px,#eceef0 13px 26px);';
   var PLACEHOLDER_THUMB = 'background-image:repeating-linear-gradient(45deg,#e0e3e5 0 6px,#eceef0 6px 12px);';
   var THUMBS_PER_PAGE = 5;
+  var ASSET_BASE = window.MUTESOUND_ASSET_BASE || '';
+  var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function assetUrl(path) {
+    if (!path || /^(https?:|data:|\/)/.test(path)) return path;
+    return ASSET_BASE + path;
+  }
 
   var casesData = [
     { t: '강동 실용음악학원', loc: '서울 강동', photos: ['드럼 연습실', '피아노 존', '레코딩 존', '드럼 연습실 2', '학원 전경'], imgs: ['uploads/KakaoTalk_20260630_152050623.jpg','uploads/KakaoTalk_20260630_152050623_01.jpg','uploads/KakaoTalk_20260630_152050623_02.jpg','uploads/KakaoTalk_20260630_152050623_03.jpg','uploads/KakaoTalk_20260630_152050623_04.jpg'] },
@@ -472,7 +489,7 @@
     { t: '양평 댄스학원', loc: '경기 양평', photos: ['댄스 스튜디오 입구', '사무 공간', '댄스 스튜디오 2', '대기 공간', '상담실', '상담실 내부', 'Dance Studio 사인', 'Dance Studio 클로즈업', '댄스 아카데미 홀'], imgs: ['uploads/KakaoTalk_20260630_151833373.jpg','uploads/KakaoTalk_20260630_151833373_01.jpg','uploads/KakaoTalk_20260630_151833373_02.jpg','uploads/KakaoTalk_20260630_151833373_03.jpg','uploads/KakaoTalk_20260630_151833373_04.jpg','uploads/KakaoTalk_20260630_151833373_05.jpg','uploads/KakaoTalk_20260630_151833373_06.jpg','uploads/KakaoTalk_20260630_151833373_07.jpg','uploads/KakaoTalk_20260630_151833373_08.jpg'] },
     { t: '제니윤 바이올린', loc: '경기 성남', photos: ['작업 공간', '바이올린 랙', 'JENNY YUN VIOLIN 사인', '유튜브 골드버튼', '벽면 마감재', 'JENNY YUN 사인 2', '거울 연습실', 'JENNY YUN 3'], imgs: ['uploads/KakaoTalk_20260630_152200392.jpg','uploads/KakaoTalk_20260630_152200392_01.jpg','uploads/KakaoTalk_20260630_152200392_02.jpg','uploads/KakaoTalk_20260630_152200392_04.jpg','uploads/KakaoTalk_20260630_152200392_05.jpg','uploads/KakaoTalk_20260630_152200392_07.jpg','uploads/KakaoTalk_20260630_152200392_08.jpg','uploads/KakaoTalk_20260630_152200392_10.jpg'] },
     { t: '클라우딘 뮤직', loc: '경기 성남', photos: ['복도', '라운지', '연습실 전경', '휴게 라운지', '창가 좌석', '악기존', '복도 2', '레슨실'], imgs: ['uploads/KakaoTalk_20260630_154759333_04.jpg','uploads/KakaoTalk_20260630_154759333_05.jpg','uploads/KakaoTalk_20260630_154759333_07.jpg','uploads/KakaoTalk_20260630_154759333_08.jpg','uploads/KakaoTalk_20260630_154759333_10.jpg','uploads/KakaoTalk_20260630_154759333_11.jpg','uploads/KakaoTalk_20260630_154759333_14.jpg','uploads/KakaoTalk_20260630_154759333_18.jpg'] },
-    { t: '파주 운정 PMP드럼학원', loc: '경기 성남', photos: ['드럼 부스 1', '드럼 부스 2', '드럼 부스 3', '연습실 패드존', 'PMP 로고', '식물 인테리어'], imgs: ['uploads/KakaoTalk_20260630_142607402.jpg','uploads/KakaoTalk_20260630_142607402_01.jpg','uploads/KakaoTalk_20260630_142607402_02.jpg','uploads/KakaoTalk_20260630_142607402_03.jpg','uploads/KakaoTalk_20260630_142607402_04.jpg','uploads/KakaoTalk_20260630_142607402_05.jpg'] },
+    { t: '파주 운정 PMP드럼학원', loc: '경기 파주', photos: ['드럼 부스 1', '드럼 부스 2', '드럼 부스 3', '연습실 패드존', 'PMP 로고', '식물 인테리어'], imgs: ['uploads/KakaoTalk_20260630_142607402.jpg','uploads/KakaoTalk_20260630_142607402_01.jpg','uploads/KakaoTalk_20260630_142607402_02.jpg','uploads/KakaoTalk_20260630_142607402_03.jpg','uploads/KakaoTalk_20260630_142607402_04.jpg','uploads/KakaoTalk_20260630_142607402_05.jpg'] },
     { t: '피바디 피아노스튜디오', loc: '서울 성동', photos: ['스튜디오 사인·그랜드피아노', '입구 사인', '레슨룸 전경', '레슨룸 클로즈업', '자격증 벽면', '십자가 디테일', '교실 공간', '조명 디테일'], imgs: ['uploads/KakaoTalk_20260630_151750039.jpg','uploads/KakaoTalk_20260630_151750039_01.jpg','uploads/KakaoTalk_20260630_151750039_02.jpg','uploads/KakaoTalk_20260630_151750039_03.jpg','uploads/KakaoTalk_20260630_151750039_04.jpg','uploads/KakaoTalk_20260630_151750039_05.jpg','uploads/KakaoTalk_20260630_151750039_06.jpg','uploads/KakaoTalk_20260630_151750039_07.jpg'] },
     { t: '현 실용음악학원', loc: '인천 계양', photos: ['업라이트 피아노·로고', '악기존', '외부 입구', '복도 전경', '그랜드피아노룸', '복도 2', '레슨룸', '멀티미디어룸', '로비 인테리어'], imgs: ['uploads/KakaoTalk_20260630_152338902.jpg','uploads/KakaoTalk_20260630_152338902_01.jpg','uploads/KakaoTalk_20260630_152338902_02.jpg','uploads/KakaoTalk_20260630_152338902_04.jpg','uploads/KakaoTalk_20260630_152338902_05.jpg','uploads/KakaoTalk_20260630_152338902_07.jpg','uploads/KakaoTalk_20260630_152338902_08.jpg','uploads/KakaoTalk_20260630_152338902_12.jpg','uploads/KakaoTalk_20260630_152338902_15.jpg'] },
     { t: '제이톤댄스', loc: '경기 성남', photos: ['창호 디테일', '비상구 도어', '대기 공간', '탈의실·원장실', '휴게 라운지'], imgs: ['uploads/KakaoTalk_20260630_141100539.jpg','uploads/KakaoTalk_20260630_141100539_02.jpg','uploads/KakaoTalk_20260630_141100539_03.jpg','uploads/KakaoTalk_20260630_141100539_04.jpg','uploads/KakaoTalk_20260630_141100539_05.jpg'] }
@@ -506,6 +523,9 @@
       track.appendChild(sl);
       slideEls.push(sl);
     }
+    if (c.imgs && c.imgs[0]) {
+      slideEls[0].style.backgroundImage = "url('" + assetUrl(c.imgs[0]) + "')";
+    }
 
     var label = document.createElement('span');
     label.style.cssText = 'position:absolute; bottom:12px; right:12px; font-size:11px; color:#76777d; background:rgba(247,249,251,0.85); padding:4px 10px; border-radius:2px; letter-spacing:0.04em;';
@@ -534,7 +554,7 @@
 
     function thumbBg(j) {
       return (st.loaded && c.imgs && c.imgs[j])
-        ? "background-image:url('" + c.imgs[j] + "'); background-size:cover; background-position:center;"
+        ? "background-image:url('" + assetUrl(c.imgs[j]) + "'); background-size:cover; background-position:center;"
         : PLACEHOLDER_THUMB;
     }
 
@@ -542,14 +562,16 @@
       if (st.loaded) return;
       st.loaded = true;
       slideEls.forEach(function (sl, j) {
-        if (c.imgs && c.imgs[j]) sl.style.backgroundImage = "url('" + c.imgs[j] + "')";
+        if (c.imgs && c.imgs[j]) sl.style.backgroundImage = "url('" + assetUrl(c.imgs[j]) + "')";
       });
       render();
     }
 
     function arrowBtn(dir) {
-      var btn = document.createElement('div');
-      btn.style.cssText = 'flex-shrink:0; width:32px; height:32px; border-radius:2px; border:1px solid #c6c6cd; display:flex; align-items:center; justify-content:center; cursor:pointer; background:#f7f9fb;';
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.setAttribute('aria-label', dir === 'prev' ? '이전 사진 묶음' : '다음 사진 묶음');
+      btn.style.cssText = 'flex-shrink:0; width:32px; height:32px; border-radius:2px; border:1px solid #c6c6cd; display:flex; align-items:center; justify-content:center; cursor:pointer; background:#f7f9fb; padding:0;';
       btn.innerHTML = dir === 'prev'
         ? '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#45464d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>'
         : '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#45464d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>';
@@ -568,6 +590,12 @@
       label.textContent = c.photos[active];
 
       thumbRow.innerHTML = '';
+      if (!st.loaded) {
+        thumbRow.style.display = 'none';
+        pageLabel.style.display = 'none';
+        return;
+      }
+      thumbRow.style.display = 'flex';
       if (showPager) {
         var prev = arrowBtn('prev');
         prev.onclick = function () { st.page = Math.max(0, page - 1); render(); };
@@ -581,10 +609,12 @@
       var slice = c.photos.slice(pageStart, pageStart + THUMBS_PER_PAGE);
       slice.forEach(function (photoLabel, k) {
         var j = pageStart + k;
-        var th = document.createElement('div');
+        var th = document.createElement('button');
         var ring = j === active ? '0 0 0 2px #191c1e' : 'inset 0 0 0 1px #c6c6cd';
+        th.type = 'button';
+        th.setAttribute('aria-label', c.t + ' - ' + photoLabel + ' 보기');
         th.title = photoLabel;
-        th.style.cssText = 'aspect-ratio:1/1; border-radius:2px; cursor:pointer; ' + thumbBg(j) + ' box-shadow:' + ring + '; transition:box-shadow 0.15s;';
+        th.style.cssText = 'aspect-ratio:1/1; border:0; padding:0; border-radius:2px; cursor:pointer; ' + thumbBg(j) + ' box-shadow:' + ring + '; transition:box-shadow 0.15s;';
         th.onclick = function () { st.active = j; render(); };
         thumbsWrap.appendChild(th);
       });
@@ -635,25 +665,28 @@
         st.visible = en.isIntersecting;
         if (en.isIntersecting) st.load();
       });
-    }, { rootMargin: '300px 0px' });
+    }, { rootMargin: '900px 0px' });
     Array.prototype.forEach.call(cards, function (el) { io.observe(el); });
   } else {
     caseState.forEach(function (st) { st.load(); st.visible = true; });
   }
+  caseState.slice(0, 3).forEach(function (st) { st.load(); });
 
   // Auto-advance only the galleries currently on screen.
-  setInterval(function () {
-    caseState.forEach(function (st, i) {
-      if (!st.visible) return;
-      var n = casesData[i].photos.length;
-      st.active = (st.active + 1) % n;
-      st.render();
-    });
-  }, 3000);
+  if (!prefersReducedMotion) {
+    setInterval(function () {
+      caseState.forEach(function (st, i) {
+        if (!st.visible) return;
+        var n = casesData[i].photos.length;
+        st.active = (st.active + 1) % n;
+        st.render();
+      });
+    }, 3000);
+  }
 
   // ---- VIDEO ----
   // Paste any YouTube link here (watch?v=, youtu.be/, shorts/, or embed/ all
-  // work) — the ID is extracted automatically and the thumbnail switches from
+  // work) - the ID is extracted automatically and the thumbnail switches from
   // the striped placeholder to the real YouTube thumbnail on its own.
   var videos = [
     { url: 'https://www.youtube.com/watch?v=EONa9JjQjyY' },
@@ -689,9 +722,11 @@
       iframe.style.cssText = 'position:absolute; inset:0; width:100%; height:100%; border:0;';
       stage.appendChild(iframe);
     } else {
-      var overlay = document.createElement('div');
+      var overlay = document.createElement('button');
       var bg = actId ? "background-image:url('https://img.youtube.com/vi/" + actId + "/hqdefault.jpg'); background-size:cover; background-position:center;" : '';
-      overlay.style.cssText = 'position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px; cursor:pointer; background-color:rgba(19,27,46,0.15); ' + bg;
+      overlay.type = 'button';
+      overlay.setAttribute('aria-label', actId ? '선택한 시공 영상 재생' : 'YouTube 링크가 필요합니다');
+      overlay.style.cssText = 'position:absolute; inset:0; width:100%; height:100%; border:0; padding:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px; cursor:pointer; background-color:rgba(19,27,46,0.15); ' + bg;
       overlay.innerHTML =
         '<div style="width:72px; height:72px; border-radius:2px; background:rgba(25,28,30,0.88); display:flex; align-items:center; justify-content:center;">' +
         '<div style="width:0; height:0; border-left:22px solid #f7f9fb; border-top:13px solid transparent; border-bottom:13px solid transparent; margin-left:5px;"></div></div>' +
@@ -707,8 +742,10 @@
       var thumbBg = vId
         ? "background-image:url('https://img.youtube.com/vi/" + vId + "/mqdefault.jpg'); background-size:cover; background-position:center;"
         : 'background-image:repeating-linear-gradient(45deg,#e0e3e5 0 8px,#eceef0 8px 16px);';
-      var card = document.createElement('div');
-      card.style.cssText = 'position:relative; aspect-ratio:16/9; border-radius:2px; overflow:hidden; cursor:pointer; background:#e0e3e5; ' + thumbBg + ' box-shadow:' + ring + ';';
+      var card = document.createElement('button');
+      card.type = 'button';
+      card.setAttribute('aria-label', '시공 영상 ' + (i + 1) + ' 선택');
+      card.style.cssText = 'position:relative; aspect-ratio:16/9; border:0; padding:0; border-radius:2px; overflow:hidden; cursor:pointer; background:#e0e3e5; ' + thumbBg + ' box-shadow:' + ring + ';';
       card.innerHTML =
         '<div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:rgba(19,27,46,0.1);">' +
         '<div style="width:30px; height:30px; border-radius:2px; background:rgba(25,28,30,0.75); display:flex; align-items:center; justify-content:center;">' +
@@ -734,20 +771,24 @@
     var item = document.createElement('div');
     item.style.cssText = 'border-bottom:1px solid #c6c6cd;';
 
-    var header = document.createElement('div');
-    header.style.cssText = 'cursor:pointer; padding:24px 28px; display:flex; justify-content:space-between; align-items:center; gap:20px; transition:background 0.2s;';
+    var header = document.createElement('button');
+    header.type = 'button';
+    header.setAttribute('aria-controls', 'faq-panel-' + i);
+    header.style.cssText = 'width:100%; border:0; background:transparent; text-align:left; cursor:pointer; padding:24px 28px; display:flex; justify-content:space-between; align-items:center; gap:20px; transition:background 0.2s;';
     header.innerHTML =
       '<span style="font-size:17px; font-weight:600; color:#191c1e; letter-spacing:-0.01em;">' + esc(f.q) + '</span>' +
       '<span class="faq-sign" style="font-size:22px; font-weight:300; color:#45464d; line-height:1; flex-shrink:0;"></span>';
 
     var body = document.createElement('div');
+    body.id = 'faq-panel-' + i;
     body.innerHTML = '<div style="padding:0 28px 24px; font-size:15px; line-height:1.8; color:#45464d;">' + esc(f.a) + '</div>';
 
     var sign = header.querySelector('.faq-sign');
 
     function apply() {
       var open = openFaq === i;
-      sign.textContent = open ? '–' : '+';
+      header.setAttribute('aria-expanded', open ? 'true' : 'false');
+      sign.textContent = open ? '-' : '+';
       body.style.cssText = 'overflow:hidden; transition:max-height 0.35s cubic-bezier(0.4,0,0.2,1),opacity 0.25s ease; max-height:' + (open ? '300px' : '0') + '; opacity:' + (open ? '1' : '0') + ';';
     }
     header.onclick = function () {

@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MUTESOUND WordPress Shortcode Preview</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23131b2e'/%3E%3Crect x='5' y='8' width='14' height='11' fill='none' stroke='%23bec6e0' stroke-width='2'/%3E%3Crect x='13' y='14' width='14' height='11' fill='none' stroke='%23bec6e0' stroke-width='2'/%3E%3Ccircle cx='20' cy='19.5' r='3.5' fill='none' stroke='%23bec6e0' stroke-width='1.5'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="mutesound-landing/assets/mutesound.css">
+</head>
+<body>
+<div id="mutesound-landing" style="background:#f7f9fb; color:#191c1e; font-family:'Pretendard',sans-serif; -webkit-font-smoothing:antialiased; line-height:1.6; overflow-x:hidden;">
+
+<!-- NAV -->
+<nav style="position:fixed; top:0; width:100%; z-index:100; background:rgba(247,249,251,0.85); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border-bottom:1px solid #c6c6cd;">
+  <div data-r="hwrap" style="max-width:1280px; margin:0 auto; padding:0 64px; height:80px; display:flex; align-items:center; justify-content:space-between; gap:24px;">
+    <a href="#top" style="text-decoration:none;">
+      <img src="mutesound-landing/assets/logo-full.png" alt="MUTESOUND" style="height:64px; width:auto; object-fit:contain; display:block;">
+    </a>
+    <div data-r="navlinks" style="display:flex; align-items:center; gap:32px;">
+      <a href="#top" style="text-decoration:none; color:#191c1e; font-size:16px; font-weight:700; border-bottom:2px solid #191c1e; padding-bottom:2px;">Home</a>
+      <a href="#cases" style="text-decoration:none; color:#45464d; font-size:16px;">Portfolio</a>
+      <a href="#services" style="text-decoration:none; color:#45464d; font-size:16px;">Services</a>
+      <a href="#contact" style="text-decoration:none; color:#45464d; font-size:16px;">Contact</a>
+    </div>
+    <a href="#contact" class="nav-cta-top" style="text-decoration:none; background:#191c1e; color:#f7f9fb; font-size:16px; font-weight:500; padding:12px 24px; border-radius:2px;">무료 상담 신청</a>
+    <button id="navToggle" class="nav-toggle" aria-label="메뉴 열기" aria-expanded="false" aria-controls="mobileMenu">
+      <svg id="navToggleIcon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+    </button>
+  </div>
+  <div id="mobileMenu" class="mobile-menu">
+    <a href="#top" data-mm>Home</a>
+    <a href="#cases" data-mm>Portfolio</a>
+    <a href="#services" data-mm>Services</a>
+    <a href="#contact" data-mm>Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="top" style="position:relative; min-height:100dvh; display:flex; align-items:center; overflow:hidden; padding:104px 0 48px;">
+  <div style="position:absolute; inset:0; z-index:0; background:#0f1218;">
+    <img src="mutesound-landing/uploads/KakaoTalk_20260630_155149554.jpg" alt="" width="1080" height="720" fetchpriority="high" decoding="async" style="width:100%; height:100%; object-fit:cover; object-position:center; opacity:0.72; display:block;">
+  </div>
+  <div style="position:absolute; inset:0; z-index:1; background:linear-gradient(90deg,rgba(12,16,24,0.94) 0%,rgba(12,16,24,0.76) 44%,rgba(12,16,24,0.24) 100%);"></div>
+  <div data-r="hero-inner" style="position:relative; z-index:2; max-width:1280px; width:100%; margin:0 auto; padding:0 64px; text-align:left; display:flex; flex-direction:column; align-items:flex-start;">
+    <p style="font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#bec6e0; margin:0 0 24px;">The Science of Silence</p>
+    <h1 data-r="h1" style="font-weight:700; font-size:64px; line-height:1.1; letter-spacing:0; margin:0 0 32px; color:#f7f9fb; text-wrap:pretty;">지상에서도 편하게<br>드럼 연주하세요.</h1>
+    <p style="font-size:18px; line-height:1.6; color:#eceef0; max-width:34em; margin:0 0 40px; background:rgba(19,27,46,0.62); border:1px solid rgba(236,238,240,0.16); padding:12px 18px; border-radius:2px; display:inline-block; backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);">
+      음악 학원부터 개인 스튜디오까지, 현장 실측 기반으로 소리가 새는 경로를 먼저 설계합니다.
+    </p>
+    <div data-r="hero-cta" style="display:flex; gap:16px; flex-wrap:wrap; justify-content:flex-start;">
+      <a href="#contact" style="text-decoration:none; background:#f7f9fb; color:#191c1e; font-size:16px; font-weight:700; padding:16px 32px; border-radius:2px; display:flex; align-items:center; gap:8px;">무료 견적 받기 →</a>
+      <a href="#services" style="text-decoration:none; border:1px solid rgba(247,249,251,0.42); background:rgba(19,27,46,0.34); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); color:#f7f9fb; font-size:16px; font-weight:600; padding:16px 32px; border-radius:2px;">서비스 알아보기</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div id="stats" style="border-top:1px solid #c6c6cd; border-bottom:1px solid #c6c6cd; background:#f2f4f6;">
+  <div data-r="statgrid" style="max-width:1280px; margin:0 auto; padding:0 64px; display:grid; grid-template-columns:repeat(4,1fr);">
+    <div style="padding:40px 24px; border-right:1px solid #c6c6cd;">
+      <div style="font-size:40px; font-weight:700; color:#191c1e; line-height:1; letter-spacing:-0.02em;">30+</div>
+      <div style="margin-top:10px; font-size:14px; color:#45464d; font-weight:500;">연간 방음 시공 건수</div>
+    </div>
+    <div style="padding:40px 24px; border-right:1px solid #c6c6cd;">
+      <div style="font-size:40px; font-weight:700; color:#191c1e; line-height:1; letter-spacing:-0.02em;">-60dB</div>
+      <div style="margin-top:10px; font-size:14px; color:#45464d; font-weight:500;">드럼 방음 차음 성능</div>
+    </div>
+    <div style="padding:40px 24px; border-right:1px solid #c6c6cd;">
+      <div style="font-size:40px; font-weight:700; color:#191c1e; line-height:1; letter-spacing:-0.02em;">지상층</div>
+      <div style="margin-top:10px; font-size:14px; color:#45464d; font-weight:500;">드럼 방음 시공 가능</div>
+    </div>
+    <div style="padding:40px 24px; border-right:1px solid #c6c6cd;">
+      <div style="font-size:40px; font-weight:700; color:#191c1e; line-height:1; letter-spacing:-0.02em;">100%</div>
+      <div style="margin-top:10px; font-size:14px; color:#45464d; font-weight:500;">현장 실측 기반 설계</div>
+    </div>
+  </div>
+</div>
+
+<!-- CASES -->
+<section id="cases" style="background:#f2f4f6;">
+  <div data-r="sec" style="max-width:1280px; margin:0 auto; padding:120px 64px;">
+    <div data-r="rowhead" style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:24px; margin-bottom:48px;">
+      <div>
+        <div style="font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#45464d; margin-bottom:20px;">PORTFOLIO · 시공 사례</div>
+        <h2 data-r="h2" style="font-size:40px; font-weight:600; letter-spacing:-0.02em; margin:0; color:#191c1e; line-height:1.2;">소리를 가둔 공간들</h2>
+      </div>
+    </div>
+    <div id="caseGrid" data-r="casegrid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px;"></div>
+  </div>
+</section>
+
+<!-- CORE SERVICES -->
+<section id="services" style="padding:120px 0; background:#f2f4f6; background-image:repeating-linear-gradient(90deg,transparent,transparent 19px,rgba(0,0,0,0.025) 19px,rgba(0,0,0,0.025) 20px);">
+  <div data-r="sec" style="max-width:1280px; margin:0 auto; padding:0 64px;">
+    <div style="margin-bottom:64px;">
+      <h2 data-r="h2" style="font-size:32px; font-weight:600; letter-spacing:-0.01em; color:#191c1e; margin:0 0 16px; line-height:1.3;">주요 시공 분야</h2>
+      <div style="width:64px; height:4px; background:#191c1e; margin:0 0 24px;"></div>
+      <p style="font-size:18px; line-height:1.6; color:#45464d; max-width:40em; margin:0;">용도와 공간의 특성에 맞춘 최적화된 방음 시공 솔루션을 제공합니다.</p>
+    </div>
+    <div data-r="svcgrid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px;">
+      <div class="svc-card" style="background:#f7f9fb; border:1px solid #c6c6cd; padding:32px; border-radius:2px; display:flex; flex-direction:column; gap:20px;">
+        <div style="width:48px; height:48px; background:#131b2e; border-radius:4px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#bec6e0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="11" rx="3"></rect><path d="M5 10a7 7 0 0 0 14 0"></path><line x1="12" y1="17" x2="12" y2="21"></line><line x1="9" y1="21" x2="15" y2="21"></line></svg>
+        </div>
+        <div>
+          <h3 style="font-size:22px; font-weight:600; color:#191c1e; margin:0 0 12px; letter-spacing:-0.01em;">드럼 방음 시공</h3>
+          <p style="font-size:15px; line-height:1.7; color:#45464d; margin:0 0 20px;">지상층 포함 모든 환경에서 드럼 방음이 가능합니다. 이중벽·부유 구조 설계로 최고 수준의 차음 성능을 구현합니다.</p>
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <div style="display:flex; align-items:center; gap:8px; font-size:15px; color:#45464d;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#191c1e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>지상층 드럼 방음 가능</div>
+            <div style="display:flex; align-items:center; gap:8px; font-size:15px; color:#45464d;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#191c1e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>-60dB 이상 차음 성능</div>
+          </div>
+        </div>
+      </div>
+      <div class="svc-card" style="background:#f7f9fb; border:1px solid #c6c6cd; padding:32px; border-radius:2px; display:flex; flex-direction:column; gap:20px;">
+        <div style="width:48px; height:48px; background:#131b2e; border-radius:4px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#bec6e0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+        </div>
+        <div>
+          <h3 style="font-size:22px; font-weight:600; color:#191c1e; margin:0 0 12px; letter-spacing:-0.01em;">음악 스튜디오 / 합주실</h3>
+          <p style="font-size:15px; line-height:1.7; color:#45464d; margin:0 0 20px;">레코딩 부스, 합주실, 연습실을 위한 완벽한 차음과 음향 최적화. 악기별 맞춤 설계를 적용합니다.</p>
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <div style="display:flex; align-items:center; gap:8px; font-size:15px; color:#45464d;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#191c1e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>방음 도어 설치</div>
+            <div style="display:flex; align-items:center; gap:8px; font-size:15px; color:#45464d;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#191c1e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>흡음·확산 패널 설계</div>
+          </div>
+        </div>
+      </div>
+      <div class="svc-card" style="background:#f7f9fb; border:1px solid #c6c6cd; padding:32px; border-radius:2px; display:flex; flex-direction:column; gap:20px;">
+        <div style="width:48px; height:48px; background:#131b2e; border-radius:4px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#bec6e0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+        </div>
+        <div>
+          <h3 style="font-size:22px; font-weight:600; color:#191c1e; margin:0 0 12px; letter-spacing:-0.01em;">음악 학원 / 상업 공간</h3>
+          <p style="font-size:15px; line-height:1.7; color:#45464d; margin:0 0 20px;">피아노 학원, 실용음악학원 등 상업 공간 방음 시공. 강의실 독립 설계로 소음 완전 차단을 실현합니다.</p>
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <div style="display:flex; align-items:center; gap:8px; font-size:15px; color:#45464d;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#191c1e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>강의실 독립 설계</div>
+            <div style="display:flex; align-items:center; gap:8px; font-size:15px; color:#45464d;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#191c1e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>마감·인테리어 통합</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="story" style="background:#f7f9fb;">
+  <div data-r="sec" style="max-width:1280px; margin:0 auto; padding:120px 64px;">
+    <div style="font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#45464d; margin-bottom:20px;">WHY · 왜 방음은 늘 실패할까요</div>
+    <h2 data-r="h2" style="font-size:40px; font-weight:600; letter-spacing:-0.02em; line-height:1.3; margin:0 0 56px; max-width:20em; color:#191c1e;">분명 방음 공사를 했는데,<br>왜 여전히 소리가 새어 나갈까요?</h2>
+    <div data-r="grid2" style="display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start;">
+      <div style="font-size:17px; line-height:1.85; color:#45464d;">
+        <p style="margin:0 0 24px;">방음은 꼭 전문 시공업체에 맡겨야 합니다. 틈만 막고 자재만 두껍게 쓴다고 해서 되는 게 아니라 상황에 맞는 자재와 시공방법을 써야만 여러분들의 소중한 자산을 지킬 수 있습니다.</p>
+        <p style="margin:0;">원인은 대부분 같습니다. <strong style="color:#191c1e;">설계 없이 자재만 덧대는 방식.</strong> 흡음재를 아무리 붙여도, 소리가 빠져나가는 경로를 막지 못하면 차음은 완성되지 않습니다.</p>
+      </div>
+      <div style="background:#131b2e; color:#eceef0; padding:44px 40px; border-radius:2px;">
+        <div style="font-size:24px; line-height:1.6; font-weight:400;">
+          상황에 맞는 설계가 꼭 필요합니다.<br><span style="color:#bec6e0;">뮤트사운드</span>가 함께 고민 해 드리겠습니다
+        </div>
+        <div style="margin-top:28px; padding-top:24px; border-top:1px solid rgba(236,238,240,0.15); font-size:13px; color:#76777d;">mutesound · 방음 설계 원칙</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" style="background:#f2f4f6; background-image:repeating-linear-gradient(90deg,transparent,transparent 19px,rgba(0,0,0,0.025) 19px,rgba(0,0,0,0.025) 20px);">
+  <div data-r="sec" style="max-width:1280px; margin:0 auto; padding:120px 64px;">
+    <div style="margin-bottom:56px;">
+      <div style="font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#45464d; margin-bottom:20px;">PROCESS · 시공 과정</div>
+      <h2 data-r="h2" style="font-size:40px; font-weight:600; letter-spacing:-0.02em; line-height:1.3; margin:0 0 16px; color:#191c1e;">시공방법이 가장 중요합니다.</h2>
+      <div style="width:64px; height:4px; background:#191c1e; margin:0 0 24px;"></div>
+      <p style="font-size:18px; line-height:1.6; color:#45464d; max-width:40em; margin:0;">측정으로 시작해 검증으로 끝나는 네 단계. 모든 과정이 데이터에 근거합니다.</p>
+    </div>
+    <div data-r="stepgrid" style="display:grid; grid-template-columns:repeat(4,1fr); gap:24px;">
+      <div style="background:#f7f9fb; border:1px solid #c6c6cd; padding:32px 28px; border-radius:2px;">
+        <div style="font-size:13px; font-weight:700; letter-spacing:0.06em; color:#45464d;">01</div>
+        <div style="margin:24px 0 12px; font-size:20px; font-weight:700; color:#191c1e; letter-spacing:-0.01em;">현장 실측 &amp; 진단</div>
+        <div style="font-size:14px; line-height:1.7; color:#45464d;">데시벨 측정과 구조 진단으로 소리가 새는 경로를 먼저 찾습니다.</div>
+      </div>
+      <div style="background:#f7f9fb; border:1px solid #c6c6cd; padding:32px 28px; border-radius:2px;">
+        <div style="font-size:13px; font-weight:700; letter-spacing:0.06em; color:#45464d;">02</div>
+        <div style="margin:24px 0 12px; font-size:20px; font-weight:700; color:#191c1e; letter-spacing:-0.01em;">맞춤 차음 설계</div>
+        <div style="font-size:14px; line-height:1.7; color:#45464d;">공간 용도와 악기에 맞춰 차음 구조를 도면 단위로 설계합니다.</div>
+      </div>
+      <div style="background:#f7f9fb; border:1px solid #c6c6cd; padding:32px 28px; border-radius:2px;">
+        <div style="font-size:13px; font-weight:700; letter-spacing:0.06em; color:#45464d;">03</div>
+        <div style="margin:24px 0 12px; font-size:20px; font-weight:700; color:#191c1e; letter-spacing:-0.01em;">정밀 방음 시공</div>
+        <div style="font-size:14px; line-height:1.7; color:#45464d;">이중벽·부유 구조·방음 도어까지, 설계대로 빈틈없이 시공합니다.</div>
+      </div>
+      <div style="background:#f7f9fb; border:1px solid #c6c6cd; padding:32px 28px; border-radius:2px;">
+        <div style="font-size:13px; font-weight:700; letter-spacing:0.06em; color:#45464d;">04</div>
+        <div style="margin:24px 0 12px; font-size:20px; font-weight:700; color:#191c1e; letter-spacing:-0.01em;">깔끔한 디자인</div>
+        <div style="font-size:14px; line-height:1.7; color:#45464d;">빈틈없는 마감과 전문적인 디자인을 제공합니다.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PERFORMANCE -->
+<section style="background:#131b2e; color:#eceef0;">
+  <div data-r="sec" style="max-width:1280px; margin:0 auto; padding:120px 64px;">
+    <div data-r="grid2" style="display:grid; grid-template-columns:0.85fr 1.15fr; gap:72px; align-items:center;">
+      <div>
+        <div style="font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#76777d; margin-bottom:20px;">PERFORMANCE · 성능</div>
+        <h2 data-r="h2" style="font-size:38px; font-weight:600; letter-spacing:-0.02em; line-height:1.3; margin:0 0 24px; color:#f7f9fb;">차음은 느낌이 아니라<br>숫자입니다</h2>
+        <p style="font-size:17px; line-height:1.75; color:#76777d; margin:0;">가장 까다로운 드럼 방음에서 MUTESOUND는 <strong style="color:#eceef0;">최소 -60dB 이상</strong>의 차음 성능을 구현합니다. 시공 전후를 같은 조건에서 실측해 결과를 그대로 보여드립니다.</p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:28px;">
+        <div>
+          <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:12px;">
+            <span style="font-size:14px; font-weight:600; color:#76777d;">일반 주택 벽</span>
+            <span style="font-size:17px; font-weight:700; color:#76777d;">약 -25dB</span>
+          </div>
+          <div style="height:12px; border-radius:1px; background:rgba(236,238,240,0.1); overflow:hidden;"><div style="height:100%; width:38%; background:rgba(255,255,255,0.28);"></div></div>
+        </div>
+        <div>
+          <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:12px;">
+            <span style="font-size:14px; font-weight:600; color:#b9c7e0;">일반 방음 시공</span>
+            <span style="font-size:17px; font-weight:700; color:#b9c7e0;">약 -40dB</span>
+          </div>
+          <div style="height:12px; border-radius:1px; background:rgba(236,238,240,0.1); overflow:hidden;"><div style="height:100%; width:62%; background:rgba(255,255,255,0.52);"></div></div>
+        </div>
+        <div>
+          <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:12px;">
+            <span style="font-size:14px; font-weight:600; color:#f7f9fb;">MUTESOUND 드럼 방음</span>
+            <span style="font-size:17px; font-weight:700; color:#f7f9fb;">-60dB 이상</span>
+          </div>
+          <div style="height:12px; border-radius:1px; background:rgba(236,238,240,0.1); overflow:hidden;"><div style="height:100%; width:96%; background:#f7f9fb;"></div></div>
+        </div>
+        <div style="font-size:12px; color:#45464d; letter-spacing:0.02em;">* 시공 환경 및 측정 조건에 따라 결과는 달라질 수 있습니다.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section id="video" style="background:#f2f4f6; background-image:repeating-linear-gradient(90deg,transparent,transparent 19px,rgba(0,0,0,0.025) 19px,rgba(0,0,0,0.025) 20px);">
+  <div data-r="sec" style="max-width:1280px; margin:0 auto; padding:120px 64px;">
+    <div data-r="rowhead" style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:24px; margin-bottom:48px;">
+      <div>
+        <div style="font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#45464d; margin-bottom:20px;">VIDEO · 시공 영상</div>
+        <h2 data-r="h2" style="font-size:40px; font-weight:600; letter-spacing:-0.02em; margin:0; color:#191c1e; line-height:1.2;">현장의 소리,<br>영상으로 확인하세요</h2>
+      </div>
+      <p style="font-size:16px; color:#45464d; max-width:22em; line-height:1.7; margin:0;">시공 과정과 차음 성능을 영상으로 직접 확인하실 수 있습니다.</p>
+    </div>
+    <div id="videoStage" style="position:relative; aspect-ratio:16/9; border-radius:2px; overflow:hidden; border:1px solid #c6c6cd; background:#e0e3e5; background-image:repeating-linear-gradient(45deg,#e0e3e5 0 16px,#eceef0 16px 32px);"></div>
+    <div id="videoGrid" data-r="vidgrid" style="display:grid; gap:12px; margin-top:20px;"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" style="background:#f7f9fb;">
+  <div data-r="secgrid" style="max-width:1280px; margin:0 auto; padding:120px 64px; display:grid; grid-template-columns:1fr 1fr; gap:72px; align-items:center;">
+    <div>
+      <div style="font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#45464d; margin-bottom:20px;">ABOUT · 회사 소개</div>
+      <h2 data-r="h2" style="font-size:38px; font-weight:600; letter-spacing:-0.02em; line-height:1.3; margin:0 0 24px; color:#191c1e;">방음만 파고든<br>전문가의 손에 맡기세요</h2>
+      <p style="font-size:17px; line-height:1.8; color:#45464d; margin:0;">MUTESOUND는 음악 공간 방음 시공에 집중해 온 전문 업체입니다. 특히 가장 어려운 <strong style="color:#191c1e;">지상층 드럼 방음</strong>이 가능한 국내 소수 업체로, 매년 30건 이상의 현장에서 차음 성능을 검증해 왔습니다.</p>
+      <img src="mutesound-landing/assets/business-card.jpg" alt="MUTESOUND 명함 · 방성환 대표" loading="eager" decoding="async" style="display:block; width:100%; aspect-ratio:1200/778; object-fit:cover; margin-top:32px; border-radius:2px; border:1px solid #c6c6cd;">
+    </div>
+    <div style="display:flex; flex-direction:column; gap:14px;">
+      <div style="display:flex; gap:14px; align-items:flex-start; background:#f2f4f6; border:1px solid #c6c6cd; border-radius:2px; padding:20px 22px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#191c1e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;"><polyline points="20 6 9 17 4 12"></polyline></svg><span style="font-size:16px; line-height:1.6; color:#191c1e; font-weight:500;">지상층 드럼 방음이 가능한 국내 소수 전문 업체</span></div>
+      <div style="display:flex; gap:14px; align-items:flex-start; background:#f2f4f6; border:1px solid #c6c6cd; border-radius:2px; padding:20px 22px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#191c1e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;"><polyline points="20 6 9 17 4 12"></polyline></svg><span style="font-size:16px; line-height:1.6; color:#191c1e; font-weight:500;">연간 30건 이상, 다년간 축적된 현장 시공 경험</span></div>
+      <div style="display:flex; gap:14px; align-items:flex-start; background:#f2f4f6; border:1px solid #c6c6cd; border-radius:2px; padding:20px 22px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#191c1e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;"><polyline points="20 6 9 17 4 12"></polyline></svg><span style="font-size:16px; line-height:1.6; color:#191c1e; font-weight:500;">무료 현장 실측과 방음 컨설팅</span></div>
+      <div style="display:flex; gap:14px; align-items:flex-start; background:#f2f4f6; border:1px solid #c6c6cd; border-radius:2px; padding:20px 22px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#191c1e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;"><polyline points="20 6 9 17 4 12"></polyline></svg><span style="font-size:16px; line-height:1.6; color:#191c1e; font-weight:500;">인테리어와 방음 성능을 함께 설계하는 통합 접근</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" style="background:#f2f4f6; background-image:repeating-linear-gradient(90deg,transparent,transparent 19px,rgba(0,0,0,0.025) 19px,rgba(0,0,0,0.025) 20px);">
+  <div data-r="sec" style="max-width:860px; margin:0 auto; padding:120px 64px;">
+    <div style="text-align:center; margin-bottom:56px;">
+      <div style="font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#45464d; margin-bottom:20px;">FAQ · 자주 묻는 질문</div>
+      <h2 data-r="h2" style="font-size:40px; font-weight:600; letter-spacing:-0.02em; margin:0; color:#191c1e; line-height:1.2;">궁금한 점을 모았습니다</h2>
+    </div>
+    <div id="faqList" style="border:1px solid #c6c6cd; border-radius:2px; overflow:hidden; background:#f7f9fb;"></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="background:#131b2e; color:#eceef0;">
+  <div data-r="secgrid" style="max-width:1280px; margin:0 auto; padding:120px 64px; display:grid; grid-template-columns:1fr 1fr; gap:72px; align-items:start;">
+    <div>
+      <div style="font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#76777d; margin-bottom:20px;">CONSULTATION · 상담 신청</div>
+      <h2 data-r="h2" style="font-size:42px; font-weight:600; letter-spacing:-0.02em; line-height:1.2; margin:0 0 24px; color:#f7f9fb;">지금, 무료 현장<br>상담을 신청하세요</h2>
+      <p style="font-size:17px; line-height:1.8; color:#76777d; margin:0 0 32px;">신청하시면 전문가가 직접 방문해 아래를 무료로 진행합니다.</p>
+      <div style="display:flex; flex-direction:column; gap:14px; margin-bottom:40px;">
+        <div style="display:flex; gap:12px; align-items:center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#bec6e0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span style="font-size:16px; color:#eceef0;">전문가의 현장 실측 및 소음 진단</span></div>
+        <div style="display:flex; gap:12px; align-items:center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#bec6e0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span style="font-size:16px; color:#eceef0;">공간에 맞춘 차음 설계 방향 제안</span></div>
+        <div style="display:flex; gap:12px; align-items:center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#bec6e0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span style="font-size:16px; color:#eceef0;">투명한 항목별 견적서 제공</span></div>
+      </div>
+      <div style="padding-top:32px; border-top:1px solid rgba(236,238,240,0.12);">
+        <div style="font-size:13px; color:#76777d; margin-bottom:6px;">전화 상담</div>
+        <a href="tel:010-5310-1376" style="font-size:28px; font-weight:700; color:#f7f9fb; text-decoration:none; letter-spacing:-0.01em;">010-5310-1376</a>
+        <div style="margin-top:8px; font-size:14px; color:#76777d;">상담은 100% 무료이며, 부담 없이 문의하셔도 좋습니다.</div>
+      </div>
+    </div>
+    <div id="formCard" data-r="formcard" style="background:#f7f9fb; border-radius:2px; padding:40px; color:#191c1e;">
+      <form id="consultForm">
+        <input type="hidden" name="access_key" value="f71314ba-59f8-4578-ab45-ef0ee4330e5c">
+        <input type="hidden" name="subject" value="MUTESOUND 홈페이지 - 새 상담 신청">
+        <input type="hidden" name="from_name" value="MUTESOUND 홈페이지">
+        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+        <div style="font-size:18px; font-weight:700; margin-bottom:24px; letter-spacing:-0.01em;">상담 신청서</div>
+        <div style="display:flex; flex-direction:column; gap:16px;">
+          <label style="display:block;">
+            <span style="display:block; font-size:13px; font-weight:600; color:#45464d; margin-bottom:7px;">성함</span>
+            <input name="name" autocomplete="name" required placeholder="홍길동" style="width:100%; padding:12px 14px; border:1px solid #c6c6cd; border-radius:2px; font-size:16px; font-family:inherit; background:#fff; color:#191c1e; outline:none;">
+          </label>
+          <label style="display:block;">
+            <span style="display:block; font-size:13px; font-weight:600; color:#45464d; margin-bottom:7px;">연락처</span>
+            <input name="phone" type="tel" autocomplete="tel" required placeholder="010-0000-0000" style="width:100%; padding:12px 14px; border:1px solid #c6c6cd; border-radius:2px; font-size:16px; font-family:inherit; background:#fff; color:#191c1e; outline:none;">
+          </label>
+          <label style="display:block;">
+            <span style="display:block; font-size:13px; font-weight:600; color:#45464d; margin-bottom:7px;">공간 유형</span>
+            <select name="space" style="width:100%; padding:12px 14px; border:1px solid #c6c6cd; border-radius:2px; font-size:16px; font-family:inherit; background:#fff; color:#191c1e; outline:none;">
+              <option>드럼 연습실</option>
+              <option>밴드 합주실</option>
+              <option>보컬 · 레코딩 부스</option>
+              <option>홈 뮤직 스튜디오</option>
+              <option>피아노 작업실</option>
+              <option>기타</option>
+            </select>
+          </label>
+          <label style="display:block;">
+            <span style="display:block; font-size:13px; font-weight:600; color:#45464d; margin-bottom:7px;">문의 내용 <span style="font-weight:400; color:#76777d;">(선택)</span></span>
+            <textarea name="msg" placeholder="공간 위치, 면적, 원하시는 일정 등을 적어주세요." rows="3" style="width:100%; padding:12px 14px; border:1px solid #c6c6cd; border-radius:2px; font-size:16px; font-family:inherit; background:#fff; color:#191c1e; outline:none; resize:vertical;"></textarea>
+          </label>
+          <button id="consultSubmit" type="submit" style="margin-top:4px; width:100%; padding:15px; border:none; border-radius:2px; background:#191c1e; color:#f7f9fb; font-size:16px; font-weight:600; font-family:inherit; cursor:pointer;">무료 상담 신청하기</button>
+          <div id="consultError" role="alert" aria-live="polite" style="display:none; font-size:13px; color:#b3261e; text-align:center;">전송에 실패했습니다. 전화(010-5310-1376)로 문의해 주세요.</div>
+          <div style="font-size:12px; color:#76777d; text-align:center;">제출하신 정보는 상담 목적 외에 사용되지 않습니다.</div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:#f2f4f6; border-top:1px solid #c6c6cd;">
+  <div data-r="footer" style="max-width:1280px; margin:0 auto; padding:80px 64px; display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:48px;">
+    <div>
+      <img src="mutesound-landing/assets/logo-full.png" alt="MUTESOUND" loading="lazy" decoding="async" style="height:48px; width:auto; object-fit:contain; display:block; margin-bottom:16px;">
+      <p style="font-size:14px; line-height:1.8; color:#45464d; max-width:26em; margin:0 0 8px;">음악 학원 · 연습실 전문 방음 시공</p>
+      <p style="font-size:13px; color:#76777d; margin:0;">© 2026 MUTESOUND. All rights reserved.</p>
+    </div>
+    <div>
+      <h4 style="font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#45464d; margin:0 0 20px;">Services</h4>
+      <div style="display:flex; flex-direction:column; gap:12px; font-size:14px;">
+        <a href="#services" style="text-decoration:none; color:#45464d;">드럼 방음 시공</a>
+        <a href="#services" style="text-decoration:none; color:#45464d;">음악 스튜디오</a>
+        <a href="#services" style="text-decoration:none; color:#45464d;">음악 학원</a>
+      </div>
+    </div>
+    <div>
+      <h4 style="font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#45464d; margin:0 0 20px;">Company</h4>
+      <div style="display:flex; flex-direction:column; gap:12px; font-size:14px;">
+        <a href="#about" style="text-decoration:none; color:#45464d;">회사 소개</a>
+        <a href="#cases" style="text-decoration:none; color:#45464d;">시공 사례</a>
+        <a href="#faq" style="text-decoration:none; color:#45464d;">FAQ</a>
+      </div>
+    </div>
+    <div>
+      <h4 style="font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#45464d; margin:0 0 20px;">Connect</h4>
+      <div style="display:flex; flex-direction:column; gap:12px; font-size:14px;">
+        <a href="#contact" style="text-decoration:none; color:#45464d;">무료 상담 신청</a>
+        <a href="tel:010-5310-1376" style="text-decoration:none; color:#45464d;">010-5310-1376</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</div>
+<script>window.MUTESOUND_ASSET_BASE = "mutesound-landing/";</script>
+<script src="mutesound-landing/assets/mutesound.js" defer></script>
+</body>
+</html>
