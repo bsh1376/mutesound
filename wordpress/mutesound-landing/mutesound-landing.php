@@ -2,7 +2,7 @@
 /**
  * Plugin Name: MUTESOUND Landing Page
  * Description: MUTESOUND landing page shortcode and front page renderer for WordPress.
- * Version: 1.0.1
+ * Version: 1.0.3
  * Author: MUTESOUND
  * License: GPL-2.0-or-later
  */
@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-const MUTESOUND_LANDING_VERSION = '1.0.1';
+const MUTESOUND_LANDING_VERSION = '1.0.3';
 
 function mutesound_landing_template_html() {
     $template_path = plugin_dir_path(__FILE__) . 'templates/landing.html';
@@ -82,12 +82,17 @@ function mutesound_landing_render_full_page() {
     echo '<meta charset="' . $charset . '">';
     echo '<meta name="viewport" content="width=device-width, initial-scale=1">';
     echo '<title>MUTESOUND | 음악 학원 · 연습실 전문 방음 시공</title>';
-    echo '<meta name="description" content="MUTESOUND는 음악 학원, 연습실, 스튜디오를 위한 현장 실측 기반 방음 시공을 제공합니다.">';
+    echo '<meta name="description" content="지상층 드럼 방음까지 가능한 국내 소수 전문 업체. 현장 실측 기반 차음 설계로 -60dB 이상의 방음 성능을 구현합니다.">';
     echo '<link rel="canonical" href="' . $canonical_url . '">';
     echo '<meta property="og:type" content="website">';
-    echo '<meta property="og:title" content="MUTESOUND | 음악 학원 · 연습실 전문 방음 시공">';
-    echo '<meta property="og:description" content="드럼 연습실, 합주실, 음악 학원을 위한 전문 방음 시공 상담.">';
+    echo '<meta property="og:url" content="' . $canonical_url . '">';
+    echo '<meta property="og:title" content="MUTESOUND · 음악 학원 · 연습실 전문 방음 시공">';
+    echo '<meta property="og:description" content="지상층 드럼 방음까지 가능한 국내 소수 전문 업체. 현장 실측 기반 차음 설계로 -60dB 이상의 방음 성능을 구현합니다.">';
     echo '<meta property="og:image" content="' . $og_url . '">';
+    echo '<meta name="twitter:card" content="summary_large_image">';
+    echo '<meta name="twitter:title" content="MUTESOUND · 음악 학원 · 연습실 전문 방음 시공">';
+    echo '<meta name="twitter:description" content="지상층 드럼 방음까지 가능한 국내 소수 전문 업체. 현장 실측 기반 차음 설계로 -60dB 이상의 방음 성능을 구현합니다.">';
+    echo '<meta name="twitter:image" content="' . $og_url . '">';
     echo '<link rel="preload" as="image" href="' . $hero_url . '" fetchpriority="high">';
     echo '<link rel="stylesheet" href="' . $css_url . '">';
     echo '<style>html,body{margin:0;padding:0;background:#f7f9fb;}body{font-family:Pretendard,system-ui,-apple-system,BlinkMacSystemFont,sans-serif;}</style>';
